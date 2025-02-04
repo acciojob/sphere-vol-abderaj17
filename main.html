@@ -25,7 +25,7 @@
                 vlmField.value = "NaN";
                 return;
             }
-            const volume = 4 / 3 * Math.PI * radius ** 3;
+            const volume = (4 / 3 * Math.PI * radius ** 3).toFixed(4);
             vlmField.value = `${volume}`;
         }
         document.getElementById('MyForm').addEventListener('submit', volume_sphere);
