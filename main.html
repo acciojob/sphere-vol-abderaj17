@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8"> 
-<title>Volume of a Sphere</title>
-<style> 
-body{padding-top:30px;}
-label,input{display:block;} 
-</style>
+    <meta charset="utf-8">
+    <title>Volume of a Sphere</title>
+    <style>
+        body { padding-top: 30px; }
+        label, input { display: block; }
+    </style>
 </head>
 <body>
-	<p>Input radius value and get the volume of a sphere.</p>
-	<form action="" method="post" id="MyForm">
-	<label for="radius">Radius</label><input type="text" name="radius" id="radius" required>
-	<label for="volume">Volume</label><input type="text" name="volume" id="volume">
-	<input type="submit" value="Calculate" id="submit">    </form>
-	<script type="text/javascript" src="./script.js"></script>
+    <p>Input radius value and get the volume of a sphere.</p>
+    <form action="" method="post" id="MyForm">
+        <label for="radius">Radius</label><input type="text" name="radius" id="radius" required>
+        <label for="volume">Volume</label><input type="text" name="volume" id="volume" readonly>
+        <input type="submit" value="Calculate" id="submit">
+    </form>
+    <script type="text/javascript">
+        function volume_sphere() {
+            event.preventDefault();
+            const radiusField = document.querySelector("#radius");
+            const vlmField = document.querySelector("#volume");
+            let radius = parseFloat(radiusField.value.trim());
+            if (isNaN(radius) || radius <= 0) {
+                vlmField.value = "NaN";
+                return;
+            }
+            const volume = 4 / 3 * 3.14 * radius ** 3;
+            vlmField.value = `${volume}`;
+        }
+        document.getElementById('MyForm').addEventListener('submit', volume_sphere);
+    </script>
 </body>
 </html>
