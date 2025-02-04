@@ -1,15 +1,20 @@
-function volume_sphere() {
+function volume_sphere(e) {
     //Write your code here
+	e.preventDefault();
+	
   const radiusField = document.querySelector("#radius");
 	const vlmField = document.querySelector("#volume");
 
-	let radius = parseInt(radiusField.value.trim());
+	let radius = parseFloat(radiusField.value.trim());
 
-	if(radius <= 0) return "NaN";
+	
+	const volume = 4/3 * 3.14 * radius**3;
 
-	const volume = 4/3(3.14*radius**3);
-
-	vlmField.textContent = `${volume}`;
+	vlmField.value = `${volume}`;
+	if(radius <= 0){
+		vlmField.textContent = "NaN"
+		return;
+}
 } 
 
 window.onload = document.getElementById('MyForm').onsubmit = volume_sphere;
